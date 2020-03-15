@@ -10,22 +10,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
-        
-   <ImageButton
-       android:id="@+id/alpabet_button"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:src="@drawable/alfabet"
-       android:layout_marginRight="60px"
-       android:layout_marginLeft="60px"
-       android:layout_marginTop="22px"
-       android:layout_marginBottom="22px"
-       />
+
+
+        <ImageButton
+            android:id="@+id/alpabet_button"
+            android:layout_width="wrap_content"
+            android:layout_height="251dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="60px"
+            android:layout_marginTop="22px"
+            android:layout_marginRight="60px"
+            android:layout_marginBottom="22px"
+
+            android:scaleType="centerCrop"
+            android:src="@drawable/alfabet"
+            android:background="@null"
+
+
+            />
         <ImageButton
             android:id="@+id/numbers_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/alfabet"
+
             android:layout_marginRight="60px"
             android:layout_marginLeft="60px"
             android:layout_marginTop="22px"
@@ -35,7 +42,7 @@
             android:id="@+id/animal_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/alfabet"
+
             android:layout_marginRight="60px"
             android:layout_marginLeft="60px"
             android:layout_marginTop="22px"
