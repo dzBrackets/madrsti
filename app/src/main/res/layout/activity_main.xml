@@ -5,32 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/mainbg"
+    android:background="#6D3EA2"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="47dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="#000000"
+            >
 
             <ImageView
                 android:id="@+id/img_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/starscore" />
+                android:src="@drawable/starscore"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="5dp"
+
+                />
 
             <TextView
                 android:id="@+id/textView_score"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="11dp"
                 android:layout_weight="1"
                 android:text="9999"
                 android:textColor="@android:color/white"
@@ -52,9 +60,9 @@
             android:layout_height="251dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="60px"
-            android:layout_marginTop="22px"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="60px"
-            android:layout_marginBottom="22px"
+            android:layout_marginBottom="8dp"
 
             android:background="@null"
             android:scaleType="centerCrop"
