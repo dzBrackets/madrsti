@@ -63,10 +63,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginRight="60px"
             android:layout_marginBottom="8dp"
-
-            android:background="@null"
             android:scaleType="centerCrop"
             android:src="@drawable/alphabet"
+            android:background="@drawable/shape"
 
 
             />
@@ -79,12 +78,9 @@
             android:layout_marginTop="22px"
             android:layout_marginRight="60px"
             android:layout_marginBottom="22px"
-
-            android:background="@null"
             android:scaleType="centerCrop"
             android:src="@drawable/number"
-
-
+            android:background="@drawable/shape"
             />
         <ImageButton
             android:id="@+id/science_button"
@@ -95,12 +91,9 @@
             android:layout_marginTop="22px"
             android:layout_marginRight="60px"
             android:layout_marginBottom="22px"
-
-            android:background="@null"
             android:scaleType="centerCrop"
             android:src="@drawable/sciences"
-
-
+            android:background="@drawable/shape"
             />
 
 
