@@ -4,13 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/mainbg"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/starscore" />
+
+            <TextView
+                android:id="@+id/textView_score"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="9999"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/img_Logo"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingTop="25dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/logomadrasati" />
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/alpabet_button123"
@@ -22,32 +56,46 @@
             android:layout_marginRight="60px"
             android:layout_marginBottom="22px"
 
-            android:scaleType="centerCrop"
-            android:src="@drawable/alfabet"
             android:background="@null"
+            android:scaleType="centerCrop"
+            android:src="@drawable/alphabet"
 
 
             />
         <ImageButton
             android:id="@+id/numbers_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginRight="60px"
+            android:layout_height="251dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="60px"
             android:layout_marginTop="22px"
+            android:layout_marginRight="60px"
             android:layout_marginBottom="22px"
+
+            android:background="@null"
+            android:scaleType="centerCrop"
+            android:src="@drawable/number"
+
+
             />
         <ImageButton
-            android:id="@+id/animal_button"
+            android:id="@+id/science_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginRight="60px"
+            android:layout_height="251dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="60px"
             android:layout_marginTop="22px"
+            android:layout_marginRight="60px"
             android:layout_marginBottom="22px"
+
+            android:background="@null"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sciences"
+
+
             />
-        
+
+
+
     </LinearLayout>
 </ScrollView>
