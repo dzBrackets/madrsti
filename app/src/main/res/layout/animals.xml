@@ -10,7 +10,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/up_layout"
+        android:id="@+id/nav_bar"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="#FF29183E"
@@ -51,7 +51,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView_star"
+            android:id="@+id/star_iv"
             android:layout_width="40dp"
             android:layout_height="47dp"
             android:layout_marginTop="8dp"
@@ -59,13 +59,13 @@
             android:layout_weight="1"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView_qstnumber"
+            app:layout_constraintEnd_toStartOf="@+id/qst_number_tv"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/nedjma" />
 
 
         <TextView
-            android:id="@+id/textView_qstnumber"
+            android:id="@+id/qst_number_tv"
             android:layout_width="wrap_content"
             android:layout_height="47dp"
             android:layout_marginTop="8dp"
@@ -79,7 +79,7 @@
             android:textSize="25sp"
 
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/up_layout"
+            app:layout_constraintEnd_toEndOf="@+id/nav_bar"
             app:layout_constraintTop_toTopOf="parent" />
 
 
