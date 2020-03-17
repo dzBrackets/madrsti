@@ -52,7 +52,6 @@
             android:id="@+id/star_iv"
             android:layout_width="47dp"
             android:layout_height="47dp"
-            android:layout_marginEnd="0"
 
             android:layout_weight="1"
             android:scaleType="fitCenter"
