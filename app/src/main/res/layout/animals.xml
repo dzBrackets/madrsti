@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout3"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#6D3EA2"
@@ -10,7 +10,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearLayout4"
+        android:id="@+id/up_layout"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="#FF29183E"
@@ -25,31 +25,20 @@
             android:id="@+id/back_button"
             android:layout_width="34dp"
             android:layout_height="47dp"
+            android:layout_marginStart="4dp"
             android:background="@drawable/back"
 
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView"
-            app:layout_constraintHorizontal_bias="0.06"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView2"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/nedjma" />
+
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView_number"
             android:layout_width="250dp"
             android:layout_height="47dp"
+            android:layout_marginTop="4dp"
             android:layout_weight="1"
             android:fontFamily="@font/baloobhaijaan_regular"
             android:text="حيوانات"
@@ -61,11 +50,25 @@
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/imageView_star"
+            android:layout_width="40dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView_qstnumber"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/nedjma" />
+
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView_qstnumber"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="47dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:fontFamily="@font/baloobhaijaan_regular"
             android:paddingRight="8dp"
@@ -73,12 +76,11 @@
             android:textAlignment="textEnd"
             android:textColor="@android:color/white"
             android:textIsSelectable="false"
-
             android:textSize="25sp"
+
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.375" />
+            app:layout_constraintEnd_toEndOf="@+id/up_layout"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
