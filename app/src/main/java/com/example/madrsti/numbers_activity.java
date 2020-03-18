@@ -113,8 +113,8 @@ void startGame(){
         setQstLayout(q.type);
         if (q.type==1)
             txtQCont.setText(q.question);
-        if (q.type==2)
-//imgQst.setImageIcon(q.path);
+ //       if (q.type==2)
+//imgQst.src();
 
         button1.setText(1+"");
         button2.setText(q.responds[1]);
