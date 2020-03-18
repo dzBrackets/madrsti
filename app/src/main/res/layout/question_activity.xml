@@ -10,7 +10,7 @@
 
     <ImageView
         android:id="@+id/progress_bar_iv"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,6 +24,7 @@
         android:id="@+id/choosen_answer_tv"
         android:layout_width="350dp"
         android:layout_height="70dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/choose_answer"
         android:fontFamily="@font/baloobhaijaan_regular"
         android:gravity="center"
@@ -35,7 +36,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_bar_iv"
         app:layout_constraintVertical_bias="0.0" />
-
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,7 +56,7 @@
             android:layout_height="47dp"
             android:background="@drawable/back"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView_number"
+            app:layout_constraintEnd_toStartOf="@+id/mod_type"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -73,12 +73,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/qst_number_tv"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView_number"
+            app:layout_constraintStart_toEndOf="@+id/mod_type"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/nedjma" />
 
         <TextView
-            android:id="@+id/textView_number"
+            android:id="@+id/mod_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -91,7 +91,6 @@
             app:layout_constraintEnd_toStartOf="parent"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
 
         <TextView
@@ -109,122 +108,40 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/nav_bar"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView_number"
+            app:layout_constraintStart_toEndOf="@+id/mod_type"
             app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-/*TYPE 1*/
-    <TextView
-        android:id="@+id/qst_container_tv"
-        android:layout_width="370dp"
-        android:layout_height="125dp"
-        android:background="@drawable/question_type"
-        android:fontFamily="@font/baloobhaijaan_regular"
-        android:gravity="center"
-        android:text="الجمع"
-        android:textColor="#FF665C"
-        android:textSize="70sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choosen_answer_tv"
-        app:layout_constraintVertical_bias="0.1"
-        android:visibility="invisible"
-        />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/responds_container"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qst_container_tv"
-        app:layout_constraintVertical_bias="0.0">
-
-        <TextView
-            android:id="@+id/button_ch1"
-            android:layout_width="134dp"
-            android:layout_height="65dp"
-            android:background="@drawable/choice"
-            android:fontFamily="@font/baloobhaijaan_regular"
-            android:gravity="center"
-            android:text="choice1"
-            android:textColor="#595959"
-            app:layout_constraintBottom_toTopOf="@+id/button_ch3"
-            app:layout_constraintEnd_toStartOf="@+id/button_ch2"
-            app:layout_constraintHorizontal_bias="0.49"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/button_ch2"
-            android:layout_width="125dp"
-            android:layout_height="60dp"
-            android:background="@drawable/choice"
-            android:fontFamily="@font/baloobhaijaan_regular"
-            android:gravity="center"
-            android:text="choice2"
-            android:textColor="#595959"
-            app:layout_constraintBottom_toTopOf="@+id/button_ch4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_ch1"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/button_ch3"
-            android:layout_width="125dp"
-            android:layout_height="60dp"
-            android:background="@drawable/choice"
-            android:fontFamily="@font/baloobhaijaan_regular"
-            android:gravity="center"
-            android:text="choice3"
-            android:textColor="#595959"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button_ch4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_ch1" />
-
-        <TextView
-            android:id="@+id/button_ch4"
-            android:layout_width="125dp"
-            android:layout_height="60dp"
-            android:background="@drawable/choice"
-            android:fontFamily="@font/baloobhaijaan_regular"
-            android:gravity="center"
-            android:text="choice4"
-            android:textColor="#595959"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_ch3"
-            app:layout_constraintTop_toBottomOf="@+id/button_ch2" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    /*TYPE 1*/
 
     /*TYPE2*/
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/picture_container"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/picture_container"
-        android:clipChildren="false"
-        android:clipToPadding="false"
+        android:clipChildren="true"
+        android:clipToPadding="true"
         android:fontFamily="@font/baloobhaijaan_regular"
         android:gravity="center"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@id/responds_container2"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/qst_container_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/choosen_answer_tv">
 
         <ImageView
             android:id="@+id/animal_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -235,21 +152,102 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/responds_container2"
-        android:layout_width="411dp"
-        android:layout_height="323dp"
-        android:visibility="visible"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/picture_container"
-        app:layout_constraintVertical_bias="1.0"
-        >
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9">
 
         <TextView
             android:id="@+id/t2button_ch1"
-            android:layout_width="350dp"
-            android:layout_height="65dp"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/choice"
+            android:fontFamily="@font/baloobhaijaan_regular"
+            android:gravity="center"
+            android:text="choice1"
+            android:textColor="#595959"
+            app:layout_constraintBottom_toTopOf="@+id/t2button_ch3"
+            app:layout_constraintEnd_toStartOf="@+id/t2button_ch2"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/t2button_ch2"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/choice"
+            android:fontFamily="@font/baloobhaijaan_regular"
+            android:gravity="center"
+            android:text="5555555555555555"
+            android:textColor="#595959"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/t2button_ch4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/t2button_ch1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/t2button_ch3"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/choice"
+            android:fontFamily="@font/baloobhaijaan_regular"
+            android:gravity="center"
+            android:text="choice3"
+            android:textColor="#595959"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/t2button_ch4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/t2button_ch1" />
+
+        <TextView
+            android:id="@+id/t2button_ch4"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/choice"
+            android:fontFamily="@font/baloobhaijaan_regular"
+            android:gravity="center"
+            android:text="choice4"
+            android:textColor="#595959"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/t2button_ch3"
+            app:layout_constraintTop_toBottomOf="@+id/t2button_ch2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/responds_container1"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <TextView
+            android:id="@+id/t1button_ch1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/choose_answer"
             android:fontFamily="@font/baloobhaijaan_regular"
             android:gravity="center"
@@ -257,16 +255,18 @@
             android:textAlignment="center"
             android:textColor="#595959"
             android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/t2button_ch2"
+            app:layout_constraintBottom_toTopOf="@+id/t1button_ch2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/t2button_ch2"
-            android:layout_width="350dp"
-            android:layout_height="65dp"
+            android:id="@+id/t1button_ch2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/choose_answer"
             android:fontFamily="@font/baloobhaijaan_regular"
             android:gravity="center"
@@ -274,16 +274,19 @@
             android:textAlignment="center"
             android:textColor="#595959"
             android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/t2button_ch3"
+            app:layout_constraintBottom_toTopOf="@+id/t1button_ch3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/t2button_ch1" />
+            app:layout_constraintTop_toBottomOf="@+id/t1button_ch1" />
 
         <TextView
-            android:id="@+id/t2button_ch3"
-            android:layout_width="350dp"
-            android:layout_height="65dp"
+            android:id="@+id/t1button_ch3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/choose_answer"
             android:fontFamily="@font/baloobhaijaan_regular"
             android:gravity="center"
@@ -291,16 +294,17 @@
             android:textAlignment="center"
             android:textColor="#595959"
             android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/t2button_ch4"
+            app:layout_constraintBottom_toTopOf="@+id/t1button_ch4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/t2button_ch2" />
+            app:layout_constraintTop_toBottomOf="@+id/t1button_ch2" />
 
         <TextView
-            android:id="@+id/t2button_ch4"
-            android:layout_width="350dp"
-            android:layout_height="65dp"
+            android:id="@+id/t1button_ch4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/choose_answer"
             android:fontFamily="@font/baloobhaijaan_regular"
             android:gravity="center"
@@ -310,12 +314,32 @@
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/t2button_ch3" />
+            app:layout_constraintTop_toBottomOf="@+id/t1button_ch3" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/qst_container_tv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/question_type"
+        android:fontFamily="@font/baloobhaijaan_regular"
+        android:gravity="center"
+        android:text="الجمع"
+        android:textColor="#FF665C"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/responds_container1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choosen_answer_tv" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
