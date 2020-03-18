@@ -116,7 +116,7 @@ void startGame(){
  //       if (q.type==2)
 //imgQst.src();
 
-        button1.setText(1+"");
+        button1.setText(q.responds[0]);
         button2.setText(q.responds[1]);
         button3.setText(q.responds[2]);
         button4.setText(q.responds[3]);
