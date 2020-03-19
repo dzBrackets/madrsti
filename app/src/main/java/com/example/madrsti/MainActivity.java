@@ -103,6 +103,7 @@ void saveToDb(){
             public void onClick(View v) {
                 saveScore();
                 Log.i("info", "onClick: "+currentScore);
+
                 module="رياضيات";
 
                 Intent i=new Intent(MainActivity.this,numbers_activity.class);

@@ -10,9 +10,10 @@ import android.widget.TextView;
 
 public class numbers_activity extends AppCompatActivity {
 
+    static String DEFAULT_HOW_ANS="اختر الاجابة الصحيحة";
+
     //Module name
     String module=MainActivity.module;
-
 ConstraintLayout respType1;
 ConstraintLayout respType2;
 ConstraintLayout bigQCont;
@@ -57,14 +58,14 @@ TextView button1,button2,button3,button4;
 
         filData[0].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
         filData[1].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
-        filData[2].fillType1(" كم عدد زوايا المثلث", new String[]{"1","8","2","5"},2);
+        filData[2].fillType1(" كم عدد زوايا المثلث", new String[]{"180","8","2","5"},2);
         filData[3].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
-        filData[4].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
-        filData[5].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
-        filData[6].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
-        filData[7].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
-        filData[8].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
-        filData[9].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
+        filData[4].fillType2("bird", new String[]{"عينان","عينون","عيون","عين"},2,"كم عدد اعين هذا المخلوق");
+        filData[5].fillType1("شحال دير البطاطا ", new String[]{"150دج","8دج","2دج","5دج"},2,"بالكيلو غرام يا احمق");
+        filData[6].fillType1("سؤال اخر ", new String[]{"1","8","2","5"},2);
+        filData[7].fillType1("سؤال ما ", new String[]{"3","8","2","5"},2);
+        filData[8].fillType1("1+1 ", new String[]{"8","8","2","5"},2);
+        filData[9].fillType1("1+1 ", new String[]{"4","8","2","1"},2);
 
 
 
@@ -116,10 +117,10 @@ void initInstances(){
             txtQCont.setVisibility(View.GONE);
             //setRespButton
 
-            button1=t2button1;
-            button2=t2button2;
-            button3=t2button3;
-            button4=t2button4;
+            button1=t2button2;
+            button2=t2button1;
+            button3=t2button4;
+            button4=t2button3;
 
         }
     }
@@ -128,6 +129,16 @@ void startGame(){
         data q=filData[currentStage];
     modType.setText(module);
         setQstLayout(q.type);
+
+
+        //optional qustion/remark
+        if(q.optionalQst!=null){
+            how_ans.setText(q.optionalQst);
+        }
+        else
+            how_ans.setText(DEFAULT_HOW_ANS);
+
+
         if (q.type==1)
             txtQCont.setText(q.question);
     //    if (q.type==2)
