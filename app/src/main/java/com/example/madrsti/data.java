@@ -11,13 +11,14 @@ public class data {
   public int correctAnswer=-1;
 
 
-    public void fillType2(String Path,String [] Responds,int CorrectAnswer){
-      type=2;
-      ;responds=Responds;correctAnswer=CorrectAnswer;path=Path;
-    }
+
     public void fillType1(String Question,String[] Responds,int CorrectAnswer){
         type=1;
         question=Question;responds=Responds;correctAnswer=CorrectAnswer;
+    }
+    public void fillType2(String Path,String [] Responds,int CorrectAnswer){
+        type=2;
+        ;responds=Responds;correctAnswer=CorrectAnswer;path=Path;
     }
     @androidx.annotation.NonNull
     public String toString()

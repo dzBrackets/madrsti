@@ -9,11 +9,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class numbers_activity extends AppCompatActivity {
-String module="رياضيات";
+
+    //Module name
+    String module=MainActivity.module;
+
 ConstraintLayout respType1;
 ConstraintLayout respType2;
 ConstraintLayout bigQCont;
 ImageView imgQst;
+int localScore=0;
 
 TextView    modType,
             question,
@@ -26,52 +30,56 @@ TextView    modType,
         t2button2,
         t2button3,
         t2button4,
-            lvlNum,
-            txtQCont;
+        lvlNum,
+        txtQCont;
 
 TextView button1,button2,button3,button4;
 
     ;
 
     data[] filData;
+    int currentStage=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_activity);
 
 
-
-
-
-         respType1=findViewById(R.id.responds_container1);
-         respType2=findViewById(R.id.responds_container2);
-         bigQCont=findViewById(R.id.picture_container);
-         imgQst=findViewById(R.id.animal_img);
-
-            modType=(TextView) findViewById(R.id.mod_type);
-                how_ans=(TextView) findViewById(R.id.choosen_answer_tv);
-                t1button1=(TextView) findViewById(R.id.t2button_ch1);
-                t1button2=(TextView) findViewById(R.id.t2button_ch2);
-                t1button3=(TextView) findViewById(R.id.t2button_ch3);
-                t1button4=(TextView) findViewById(R.id.t2button_ch4);
-                t2button1=(TextView) findViewById(R.id.t1button_ch1);
-                t2button2=(TextView) findViewById(R.id.t1button_ch2);
-                t2button3=(TextView) findViewById(R.id.t1button_ch3);
-                t2button4=(TextView) findViewById(R.id.t1button_ch4);
-                lvlNum=findViewById(R.id.qst_number_tv);
-                txtQCont=findViewById(R.id.qst_container_tv);
-
+        initInstances();
         filData=new data[10];
 
 
 //FilData=[{Type:A,question:"1+1",resp:[2,3,1,4],imgPath:null},...,{Type:A,question:"1+1",resp:[2,3,1,4],imgPath:null}]
         filData[0]=new data();
         filData[0].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
+        filData[0].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
+        filData[0].fillType2("1+1 ", new String[]{"1","8","2","5"},2);
+        filData[0].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
+        filData[0].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
 
 
 
         startGame();
     }
+void initInstances(){
+    respType1=findViewById(R.id.responds_container1);
+    respType2=findViewById(R.id.responds_container2);
+    bigQCont=findViewById(R.id.picture_container);
+    imgQst=findViewById(R.id.animal_img);
+
+    modType=(TextView) findViewById(R.id.mod_type);
+    how_ans=(TextView) findViewById(R.id.choosen_answer_tv);
+    t1button1=(TextView) findViewById(R.id.t1button_ch1);
+    t1button2=(TextView) findViewById(R.id.t1button_ch2);
+    t1button3=(TextView) findViewById(R.id.t1button_ch3);
+    t1button4=(TextView) findViewById(R.id.t1button_ch4);
+    t2button1=(TextView) findViewById(R.id.t2button_ch1);
+    t2button2=(TextView) findViewById(R.id.t2button_ch2);
+    t2button3=(TextView) findViewById(R.id.t2button_ch3);
+    t2button4=(TextView) findViewById(R.id.t2button_ch4);
+    lvlNum=findViewById(R.id.qst_number_tv);
+    txtQCont=findViewById(R.id.qst_container_tv);
+}
 
     void setQstLayout(int type){
 
@@ -84,10 +92,10 @@ TextView button1,button2,button3,button4;
             respType1.setVisibility(View.VISIBLE);
             txtQCont.setVisibility(View.VISIBLE);
             //setRespButton
-            button1=(TextView) findViewById(R.id.t1button_ch1);
-            button2=(TextView) findViewById(R.id.t1button_ch2);
-            button3=(TextView) findViewById(R.id.t1button_ch3);
-            button4=(TextView) findViewById(R.id.t1button_ch4);
+            button1=t1button1;
+            button2=t1button2;
+            button3=t1button3;
+            button4=t1button4;
         }
         //image with table
         if(type==2){
@@ -99,35 +107,69 @@ TextView button1,button2,button3,button4;
             txtQCont.setVisibility(View.GONE);
             //setRespButton
 
-            button1=(TextView) findViewById(R.id.t2button_ch1);
-            button2=(TextView) findViewById(R.id.t2button_ch2);
-            button3=(TextView) findViewById(R.id.t2button_ch3);
-            button4=(TextView) findViewById(R.id.t2button_ch4);
+            button1=t2button1;
+            button2=t2button2;
+            button3=t2button3;
+            button4=t2button4;
 
         }
-
     }
+
 void startGame(){
-        data q=filData[0];
+        data q=filData[currentStage];
     modType.setText(module);
         setQstLayout(q.type);
         if (q.type==1)
             txtQCont.setText(q.question);
- //       if (q.type==2)
-//imgQst.src();
+    //    if (q.type==2)
+//imgQst.setImageIcon(q.path);
 
         button1.setText(q.responds[0]);
         button2.setText(q.responds[1]);
         button3.setText(q.responds[2]);
         button4.setText(q.responds[3]);
+    button1.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View l) {
+            localScore++;
+            nextStage();
+        }
+    });
 
+    button2.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View l) {
+            exit();
+        }
+    });
+}
+void exit(){
+        numbers_activity.this.finish();
+}
+void nextStage(){
+        startGame();
+        currentStage=(currentStage+1);
+        if (currentStage<10){
+    lvlNum.setText(currentStage+1+"/10");
+        }
 
-
-
+    if(currentStage>filData.length-1)
+            gameOver();
 }
 
 
-
+void gameOver(){
+MainActivity.updateScore(localScore);
+numbers_activity.this.finish();
+}
+void setRespListener(){
+        View.OnClickListener check=new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.getsou
+            }
+        }
+}
 
 
 
