@@ -8,17 +8,130 @@
     android:background="#6D3EA2">
 
 
-    <ImageView
-        android:id="@+id/progress_bar_iv"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Progress_bar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nav_bar"
-        app:layout_constraintVertical_bias="0.001"
-        app:srcCompat="@drawable/progess_bar" />
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="TODO"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/line_lvl" />
+
+        <ImageView
+            android:id="@+id/dot1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/line"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/currentdot_lvl" />
+
+        <ImageView
+            android:id="@+id/dot2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dot1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/emptydot_lvl" />
+
+        <ImageView
+            android:id="@+id/dot3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dot2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/emptydot_lvl" />
+
+        <ImageView
+            android:id="@+id/dot4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dot3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/emptydot_lvl" />
+
+        <ImageView
+            android:id="@+id/dot5"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dot4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/emptydot_lvl" />
+
+        <ImageView
+            android:id="@+id/dot6"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dot5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/emptydot_lvl" />
+
+        <ImageView
+            android:id="@+id/dot7"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dot6"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/emptydot_lvl" />
+
+        <ImageView
+            android:id="@+id/dot8"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dot7"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/emptydot_lvl" />
+
+        <ImageView
+            android:id="@+id/dot9"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dot8"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/emptydot_lvl" />
+
+        <ImageView
+            android:id="@+id/dot10"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dot9"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/emptydot_lvl" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/choosen_answer_tv"
@@ -34,7 +147,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_bar_iv"
+        app:layout_constraintTop_toBottomOf="@+id/Progress_bar"
         app:layout_constraintVertical_bias="0.0" />
 
 
@@ -154,7 +267,7 @@
         android:id="@+id/responds_container2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -17,7 +17,10 @@ public class numbers_activity extends AppCompatActivity {
 ConstraintLayout respType1;
 ConstraintLayout respType2;
 ConstraintLayout bigQCont;
+int theCurrentAnswerIndex=-1;
 ImageView imgQst;
+    ImageView lvlDots[]=new ImageView[10];
+
 int localScore=0;
 
 TextView    modType,
@@ -68,8 +71,7 @@ TextView button1,button2,button3,button4;
         filData[9].fillType1("1+1 ", new String[]{"4","8","2","1"},2);
 
 
-
-        startGame();
+        renderStage();
     }
 void initInstances(){
     respType1=findViewById(R.id.responds_container1);
@@ -89,7 +91,17 @@ void initInstances(){
     t2button4=(TextView) findViewById(R.id.t2button_ch4);
     lvlNum=findViewById(R.id.qst_number_tv);
     txtQCont=findViewById(R.id.qst_container_tv);
-}
+    lvlDots[0]=findViewById(R.id.dot1);
+    lvlDots[1]=findViewById(R.id.dot2);
+    lvlDots[2]=findViewById(R.id.dot3);
+    lvlDots[3]=findViewById(R.id.dot4);
+    lvlDots[4]=findViewById(R.id.dot5);
+    lvlDots[5]=findViewById(R.id.dot6);
+    lvlDots[6]=findViewById(R.id.dot7);
+    lvlDots[7]=findViewById(R.id.dot8);
+    lvlDots[8]=findViewById(R.id.dot9);
+    lvlDots[9]=findViewById(R.id.dot10);
+    }
 
     void setQstLayout(int type){
 
@@ -125,7 +137,7 @@ void initInstances(){
         }
     }
 
-void startGame(){
+void renderStage(){
         data q=filData[currentStage];
     modType.setText(module);
         setQstLayout(q.type);
@@ -148,32 +160,29 @@ void startGame(){
         button2.setText(q.responds[1]);
         button3.setText(q.responds[2]);
         button4.setText(q.responds[3]);
-    button1.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View l) {
-            localScore++;
-            nextStage();
-        }
-    });
 
-    button2.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View l) {
-            exit();
-        }
-    });
+    setRespListener();
 }
-
+void checkAnswer(){
+    if(filData[currentStage].correctAnswer==theCurrentAnswerIndex){
+        yoCorrect();
+    }
+    else
+        yofool();
+    nextStage();
+}
 void exit(){
         numbers_activity.this.finish();
 }
 
 void nextStage(){
+
         currentStage=(currentStage+1);
 
     if (currentStage<10){
     lvlNum.setText(currentStage+1+"/10");
-        startGame();
+        renderStage();
+        dynamicProgress("");
     }
 
     if(currentStage>filData.length-1)
@@ -186,14 +195,49 @@ MainActivity.updateScore(localScore);
 numbers_activity.this.finish();
 }
 void setRespListener(){
-        View.OnClickListener check=new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    button1.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View l) {
+            theCurrentAnswerIndex=1;
+            checkAnswer();
 
-            }
-        };
+        }
+    });
+
+    button2.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View l) {
+            theCurrentAnswerIndex=2;
+            checkAnswer();
+
+        }
+    });
+    button3.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View l) {
+            theCurrentAnswerIndex=3;    checkAnswer();
+
+        }
+    });
+    button4.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View l) {
+            theCurrentAnswerIndex=4;
+            checkAnswer();
+
+        }
+    });
+    }
+void dynamicProgress(String condition){
+    lvlDots[currentStage].setImageResource(R.drawable.currentdot_lvl);
+
 }
 
-
-
+void yoCorrect(){
+    lvlDots[currentStage].setImageResource(R.drawable.correctdot_lvl);
+    localScore++;
+}
+void yofool(){
+    lvlDots[currentStage].setImageResource(R.drawable.wrong_lvl);
+    }
 }
