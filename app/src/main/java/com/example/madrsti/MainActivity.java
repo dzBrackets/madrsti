@@ -2,6 +2,7 @@ package com.example.madrsti;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -54,8 +55,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void loadScore(){
-        SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
-        currentScore = sharedPref.getInt(getString(R.string.score), R.integer.DEFAULT_SCORE);
+        try{
+            SharedPreferences sharedPref = getSharedPreferences("score", Activity.MODE_PRIVATE);
+        currentScore = sharedPref.getInt(getString(R.string.score), 0);}
+        catch (Exception e){
+            currentScore=0;
+        }
     }
 
 
@@ -70,9 +75,9 @@ void updateLocale(){
     score.setText(""+currentScore);
 }
 void saveScore(){
-    SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+    SharedPreferences sharedPref = getSharedPreferences("score", Activity.MODE_PRIVATE);
     SharedPreferences.Editor editor = sharedPref.edit();
-    editor.putInt(getString(R.string.score), currentScore+1);
+    editor.putInt(getString(R.string.score), currentScore);
     editor.apply();
 }
 void saveToDb(){
@@ -99,6 +104,7 @@ void saveToDb(){
                 saveScore();
                 Log.i("info", "onClick: "+currentScore);
                 module="رياضيات";
+
                 Intent i=new Intent(MainActivity.this,numbers_activity.class);
                 startActivity(i);
             }

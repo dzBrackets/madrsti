@@ -46,16 +46,25 @@ TextView button1,button2,button3,button4;
 
 
         initInstances();
+
+
         filData=new data[10];
 
 
 //FilData=[{Type:A,question:"1+1",resp:[2,3,1,4],imgPath:null},...,{Type:A,question:"1+1",resp:[2,3,1,4],imgPath:null}]
-        filData[0]=new data();
+        for(int i = 0; i<filData.length; i++)
+            filData[i]=new data();
+
         filData[0].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
-        filData[0].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
-        filData[0].fillType2("1+1 ", new String[]{"1","8","2","5"},2);
-        filData[0].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
-        filData[0].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
+        filData[1].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
+        filData[2].fillType1(" كم عدد زوايا المثلث", new String[]{"1","8","2","5"},2);
+        filData[3].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
+        filData[4].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
+        filData[5].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
+        filData[6].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
+        filData[7].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
+        filData[8].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
+        filData[9].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
 
 
 
@@ -143,15 +152,18 @@ void startGame(){
         }
     });
 }
+
 void exit(){
         numbers_activity.this.finish();
 }
+
 void nextStage(){
-        startGame();
         currentStage=(currentStage+1);
-        if (currentStage<10){
+
+    if (currentStage<10){
     lvlNum.setText(currentStage+1+"/10");
-        }
+        startGame();
+    }
 
     if(currentStage>filData.length-1)
             gameOver();
@@ -166,9 +178,9 @@ void setRespListener(){
         View.OnClickListener check=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.getsou
+
             }
-        }
+        };
 }
 
 
