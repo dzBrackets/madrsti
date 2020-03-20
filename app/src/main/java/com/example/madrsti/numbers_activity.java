@@ -3,13 +3,17 @@ package com.example.madrsti;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class numbers_activity extends AppCompatActivity {
 
+    private static final int TEXT_COLOR = Color.parseColor("#595959");
     static String DEFAULT_HOW_ANS="اختر الاجابة الصحيحة";
 
     database db=new database();
@@ -40,7 +44,7 @@ TextView    modType,
         txtQCont;
 
 TextView button1,button2,button3,button4;
-
+TextView respondsbutt[]=new TextView[4];
     ;
 
     data[] filData;
@@ -81,7 +85,6 @@ void initInstances(){
     respType2=findViewById(R.id.responds_container2);
     bigQCont=findViewById(R.id.picture_container);
     imgQst=findViewById(R.id.animal_img);
-
     modType=(TextView) findViewById(R.id.mod_type);
     how_ans=(TextView) findViewById(R.id.choosen_answer_tv);
     t1button1=(TextView) findViewById(R.id.t1button_ch1);
@@ -104,7 +107,7 @@ void initInstances(){
     lvlDots[7]=findViewById(R.id.dot8);
     lvlDots[8]=findViewById(R.id.dot9);
     lvlDots[9]=findViewById(R.id.dot10);
-    }
+}
 
     void setQstLayout(int type){
 
@@ -117,10 +120,10 @@ void initInstances(){
             respType1.setVisibility(View.VISIBLE);
             txtQCont.setVisibility(View.VISIBLE);
             //setRespButton
-            button1=t1button1;
-            button2=t1button2;
-            button3=t1button3;
-            button4=t1button4;
+            respondsbutt[0]=t1button1;
+            respondsbutt[1]=t1button2;
+            respondsbutt[2]=t1button3;
+            respondsbutt[3]=t1button4;
         }
         //image with table
         if(type==2){
@@ -132,16 +135,17 @@ void initInstances(){
             txtQCont.setVisibility(View.GONE);
             //setRespButton
 
-            button1=t2button2;
-            button2=t2button1;
-            button3=t2button4;
-            button4=t2button3;
+            respondsbutt[0]=t2button2;
+            respondsbutt[1]=t2button1;
+            respondsbutt[2]=t2button4;
+            respondsbutt[3]=t2button3;
 
         }
+        resetButton();
     }
 
 void renderStage(){
-        data q=filData[currentStage];
+    data q=filData[currentStage];
     modType.setText(module);
         setQstLayout(q.type);
 
@@ -153,25 +157,30 @@ void renderStage(){
         else
             how_ans.setText(DEFAULT_HOW_ANS);
 
-
         if (q.type==1)
             txtQCont.setText(q.question);
     //    if (q.type==2)
 //imgQst.setImageIcon(q.path);
 
-        button1.setText(q.responds[0]);
-        button2.setText(q.responds[1]);
-        button3.setText(q.responds[2]);
-        button4.setText(q.responds[3]);
+    respondsbutt[0].setText(q.responds[0]);
+    respondsbutt[1].setText(q.responds[1]);
+    respondsbutt[2].setText(q.responds[2]);
+    respondsbutt[3].setText(q.responds[3]);
 
     setRespListener();
 }
 void checkAnswer(){
+    removeKeyListener();
     if(filData[currentStage].correctAnswer==theCurrentAnswerIndex){
+        buttonCorrect(theCurrentAnswerIndex);
         yoCorrect();
     }
     else
+    {
+        buttonCorrect(filData[currentStage].correctAnswer);
+        buttonWrong(theCurrentAnswerIndex);
         yofool();
+    }
     nextStage();
 }
 void exit(){
@@ -181,10 +190,15 @@ void exit(){
 void nextStage(){
 
         currentStage=(currentStage+1);
-
     if (currentStage<10){
     lvlNum.setText(currentStage+1+"/10");
-        renderStage();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                renderStage();
+            }
+        }, 2000);
+
         dynamicProgress("");
     }
 
@@ -197,8 +211,14 @@ void gameOver(){
 MainActivity.updateScore(localScore);
 numbers_activity.this.finish();
 }
+void removeKeyListener(){
+    respondsbutt[0].setOnClickListener(null);
+    respondsbutt[1].setOnClickListener(null);
+    respondsbutt[2].setOnClickListener(null);
+    respondsbutt[3].setOnClickListener(null);
+}
 void setRespListener(){
-    button1.setOnClickListener(new View.OnClickListener() {
+    respondsbutt[0].setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View l) {
             theCurrentAnswerIndex=1;
@@ -207,7 +227,7 @@ void setRespListener(){
         }
     });
 
-    button2.setOnClickListener(new View.OnClickListener() {
+    respondsbutt[1].setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View l) {
             theCurrentAnswerIndex=2;
@@ -215,14 +235,14 @@ void setRespListener(){
 
         }
     });
-    button3.setOnClickListener(new View.OnClickListener() {
+    respondsbutt[2].setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View l) {
             theCurrentAnswerIndex=3;    checkAnswer();
 
         }
     });
-    button4.setOnClickListener(new View.OnClickListener() {
+    respondsbutt[3].setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View l) {
             theCurrentAnswerIndex=4;
@@ -243,4 +263,34 @@ void yoCorrect(){
 void yofool(){
     lvlDots[currentStage].setImageResource(R.drawable.wrong_lvl);
     }
+   void buttonWrong(int i){
+       respondsbutt[i-1].setTextColor(Color.WHITE);
+        if(filData[currentStage].type==1)
+        respondsbutt[i-1].setBackgroundResource(R.drawable.vchoiseorange);
+        else
+            respondsbutt[i-1].setBackgroundResource(R.drawable.choiceorange);
+
+   }
+   void buttonCorrect(int i){
+       respondsbutt[i-1].setTextColor(Color.WHITE);
+
+       if(filData[currentStage].type==1)
+            respondsbutt[i-1].setBackgroundResource(R.drawable.vchoicegreen);
+        else
+            respondsbutt[i-1].setBackgroundResource(R.drawable.choicegreen);
+    }
+void resetButton(){
+
+    if(filData[currentStage].type==1)
+        for (TextView i :respondsbutt){
+            i.setTextColor(TEXT_COLOR);
+            i.setBackgroundResource(R.drawable.choose_answer);
+        }
+    else
+        for (TextView i :respondsbutt){
+            i.setTextColor(TEXT_COLOR);
+            i.setBackgroundResource(R.drawable.choice);
+        }
+}
+
 }
