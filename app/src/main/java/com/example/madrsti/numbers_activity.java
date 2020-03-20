@@ -12,6 +12,8 @@ public class numbers_activity extends AppCompatActivity {
 
     static String DEFAULT_HOW_ANS="اختر الاجابة الصحيحة";
 
+    database db=new database();
+
     //Module name
     String module=MainActivity.module;
 ConstraintLayout respType1;
@@ -56,21 +58,22 @@ TextView button1,button2,button3,button4;
 
 
 //FilData=[{Type:A,question:"1+1",resp:[2,3,1,4],imgPath:null},...,{Type:A,question:"1+1",resp:[2,3,1,4],imgPath:null}]
-        for(int i = 0; i<filData.length; i++)
+        /*for(int i = 0; i<filData.length; i++)
             filData[i]=new data();
 
-        filData[0].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
-        filData[1].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
-        filData[2].fillType1(" كم عدد زوايا المثلث", new String[]{"180","8","2","5"},2);
-        filData[3].fillType1("1+1 ", new String[]{"1","8","2","5"},2);
-        filData[4].fillType2("bird", new String[]{"عينان","عينون","عيون","عين"},2,"كم عدد اعين هذا المخلوق");
-        filData[5].fillType1("شحال دير البطاطا ", new String[]{"150دج","8دج","2دج","5دج"},2,"بالكيلو غرام يا احمق");
-        filData[6].fillType1("سؤال اخر ", new String[]{"1","8","2","5"},2);
-        filData[7].fillType1("سؤال ما ", new String[]{"3","8","2","5"},2);
-        filData[8].fillType1("1+1 ", new String[]{"8","8","2","5"},2);
-        filData[9].fillType1("1+1 ", new String[]{"4","8","2","1"},2);
-
-
+        filData[0].fillType1("ماهو مجموع 20+ 16 ؟", new String[]{"36","46","26","56"},1);
+        filData[1].fillType1("ما هو العدد الذي يلي مباشرة 76 ؟", new String[]{"75","77","78","74"},2);
+        filData[2].fillType1("ماهو العدد الأكبر من 26 ؟", new String[]{"25","27","21","24"},2);
+        filData[3].fillType1("ماهو العدد الذي يسبق مباشرة 34 ؟", new String[]{"33","32","35","36"},1);
+        filData[4].fillType1("ماهي مساحة المستطيل ؟", new String[]{"طول الضلع * 4","القاعدة * الارتفاع","الطول*العرض","(الطول+العرض)*2"},3);
+        filData[5].fillType1("ما هو العدد الذي يلي مباشرة 45 ؟ ", new String[]{"44","43","47","46"},4);
+        filData[6].fillType1("ماهو مجموع 6+5 ؟ ", new String[]{"65","56","10","11"},4);
+        filData[7].fillType1("ماهو العدد الأصغر من 90 ؟ ", new String[]{"99","70","91","92"},2);
+        filData[8].fillType1("كم يساوي المتر بالسنتيمتر ؟", new String[]{"10","60","100","1000"},3);
+        filData[9].fillType1("ماهي عملية الحصر الصّحيحة ؟", new String[]{"14>12>9","8>7>11","20>19>32","0>1>2"},1);
+*/
+        db.loadMathData();
+        filData=db.getMath();
         renderStage();
     }
 void initInstances(){
