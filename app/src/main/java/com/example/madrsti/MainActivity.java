@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         updateLocale();
         Numbersbutton = (Button)findViewById(R.id.numbers_button);
         numberbuttinclicked();
-        db=new DataBaseHelper(this);
+        db=new DataBaseHelper(MainActivity.this);
     }
 
 
