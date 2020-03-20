@@ -3,10 +3,13 @@ package com.example.madrsti;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -58,9 +61,6 @@ TextView respondsbutt[]=new TextView[4];
         initInstances();
 
 
-        filData=new data[10];
-
-
 //FilData=[{Type:A,question:"1+1",resp:[2,3,1,4],imgPath:null},...,{Type:A,question:"1+1",resp:[2,3,1,4],imgPath:null}]
         /*for(int i = 0; i<filData.length; i++)
             filData[i]=new data();
@@ -76,8 +76,7 @@ TextView respondsbutt[]=new TextView[4];
         filData[8].fillType1("كم يساوي المتر بالسنتيمتر ؟", new String[]{"10","60","100","1000"},3);
         filData[9].fillType1("ماهي عملية الحصر الصّحيحة ؟", new String[]{"14>12>9","8>7>11","20>19>32","0>1>2"},1);
 */
-        db.loadMathData();
-        filData=db.getMath();
+        filData=MainActivity.selectedData;
         renderStage();
     }
 void initInstances(){
@@ -195,6 +194,7 @@ void nextStage(){
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
+
                 renderStage();
             }
         }, 2000);
@@ -211,13 +211,22 @@ void gameOver(){
 MainActivity.updateScore(localScore);
 numbers_activity.this.finish();
 }
+
+@SuppressLint("ClickableViewAccessibility")
 void removeKeyListener(){
+    respondsbutt[0].setOnTouchListener(null);
+    respondsbutt[1].setOnTouchListener(null);
+    respondsbutt[2].setOnTouchListener(null);
+    respondsbutt[3].setOnTouchListener(null);
     respondsbutt[0].setOnClickListener(null);
     respondsbutt[1].setOnClickListener(null);
     respondsbutt[2].setOnClickListener(null);
     respondsbutt[3].setOnClickListener(null);
 }
+@SuppressLint("ClickableViewAccessibility")
 void setRespListener(){
+
+        ///
     respondsbutt[0].setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View l) {
@@ -250,6 +259,27 @@ void setRespListener(){
 
         }
     });
+
+
+
+        ///
+    for(TextView i:respondsbutt)
+    i.setOnTouchListener(new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event)
+        {
+            if (event.getAction() == MotionEvent.ACTION_DOWN){
+MainActivity.clickSound.start();
+setPressed((TextView)v);
+            }
+            else
+                if (event.getAction() == MotionEvent.ACTION_UP){
+                    resetButton();
+                }
+            return false;
+        }
+    });
+
     }
 void dynamicProgress(String condition){
     lvlDots[currentStage].setImageResource(R.drawable.currentdot_lvl);
@@ -257,10 +287,13 @@ void dynamicProgress(String condition){
 }
 
 void yoCorrect(){
+        MainActivity.correctSound.start();
     lvlDots[currentStage].setImageResource(R.drawable.correctdot_lvl);
     localScore++;
 }
 void yofool(){
+    MainActivity.wrongSound.start();
+
     lvlDots[currentStage].setImageResource(R.drawable.wrong_lvl);
     }
    void buttonWrong(int i){
@@ -292,5 +325,11 @@ void resetButton(){
             i.setBackgroundResource(R.drawable.choice);
         }
 }
+void setPressed(TextView v){
+        if(filData[currentStage].type==1)
+        v.setBackgroundResource(R.drawable.vchoiceispressed);
+    if(filData[currentStage].type==2)
+        v.setBackgroundResource(R.drawable.choiceispressed);
 
+}
 }

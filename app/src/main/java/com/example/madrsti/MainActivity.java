@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +17,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
-    Button Numbersbutton;
+    final database db=new database();
+    static MediaPlayer mp,correctSound,wrongSound,looserSound,clickSound ;
+
+    static data selectedData[];
+    Button Numbersbutton,scienceButton;
     TextView score;
     static Object dataCollection[];
     static String module=null;
@@ -31,8 +36,10 @@ public class MainActivity extends AppCompatActivity {
         initInstances();
         updateLocale();
         Numbersbutton = (Button)findViewById(R.id.numbers_button);
-        numberbuttinclicked();
-      //  db=new DataBaseHelper(MainActivity.this);
+        scienceButton=findViewById(R.id.science_button);
+        initListners();
+
+
     }
 
 
@@ -68,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
 
 void initInstances(){
     score=findViewById(R.id.textView_score);
+    mp=MediaPlayer.create(this, R.raw.menu_click);
+    correctSound=MediaPlayer.create(this, R.raw.correct);
+    wrongSound=MediaPlayer.create(this, R.raw.wrong);
+    looserSound=MediaPlayer.create(this, R.raw.you_idiot);
+    clickSound=MediaPlayer.create(this, R.raw.qst_click);
 }
 
 static void updateScore(int newScore){
@@ -99,14 +111,30 @@ void saveToDb(){
 
 }
 
-    public void numberbuttinclicked(){
+    public void initListners(){
         Numbersbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mp.start();
                 saveScore();
                 Log.i("info", "onClick: "+currentScore);
-
+                db.loadMathData();
+                selectedData=db.getMath();
                 module="رياضيات";
+
+                Intent i=new Intent(MainActivity.this,numbers_activity.class);
+                startActivity(i);
+            }
+        });
+        scienceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mp.start();
+                saveScore();
+                Log.i("info", "onClick: "+currentScore);
+                db.loadMathData();
+                selectedData=db.getScience();
+                module="علوم";
 
                 Intent i=new Intent(MainActivity.this,numbers_activity.class);
                 startActivity(i);
