@@ -30,18 +30,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String req="CREATE TABLE "+table_Name+"("+
+        /*String create="CREATE TABLE "+TABLE_NAME+" ( "+COL_1+" INTEGER PRIMARY KEY AUTOINCREMENT, "+COL_2+" VARCHAR(25) NOT NULL, "+COL_3
+                +" INTEGER NOT NULL, "+COL_4+" TEXT NOT NULL, "+COL_5+" TEXT NOT NULL, "+COL_6+" BOOLEAN DEFAULT 0, "+COL_7+" TEXT DEFAULT NULL, "+
+                COL_8+" DOUBLE, "+COL_9+" DOUBLE)";
+    db.execSQL(create);*/
+        String req="CREATE TABLE "+table_Name+" ( "+
                 col1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                col2+" VARCHAR(50),"+
-                col3+" CHARACTER(15),"+
-                col4+" CHARACTER(15),"+
-                col5+" CHARACTER(15),"+
-                col6+" CHARACTER(15),"+
-                col7+" CHARACTER(15),"+
-                col8+" INTEGER,"+
-                col9+" CHARACTER(5));";
-        //db.execSQL(req);
-        db.execSQL("CREATE TABLE ghanou (ID INTEGER PRIMARY KEY AUTOINCREMENT,question VARCHAR(50),S1 CHARACTER(15),S2 CHARACTER(15),S3 CHARACTER(15),S4 CHARACTER(15),Qs CHARACTER(15),NumQ INTEGER,TypeQ CHARACTER(5));");
+                col2+" VARCHAR(50), "+
+                col3+" CHARACTER(15), "+
+                col4+" CHARACTER(15), "+
+                col5+" CHARACTER(15), "+
+                col6+" CHARACTER(15), "+
+                col7+" CHARACTER(15), "+
+                col8+" INTEGER, "+
+                col9+" CHARACTER(5))";
+        db.execSQL(req);
+        //db.execSQL("CREATE TABLE ghanou (ID INTEGER PRIMARY KEY AUTOINCREMENT,question VARCHAR(50),S1 CHARACTER(15),S2 CHARACTER(15),S3 CHARACTER(15),S4 CHARACTER(15),Qs CHARACTER(15),NumQ INTEGER,TypeQ CHARACTER(5));");
         insertData();
 
     }

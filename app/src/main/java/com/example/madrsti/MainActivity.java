@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     static Object dataCollection[];
     static String module=null;
     static int currentScore=0;
-    database db;
+    DataBaseHelper db;
 //dataCollection [Mod1->array of data,Mod2,Mod3,Mod4]
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         updateLocale();
         Numbersbutton = (Button)findViewById(R.id.numbers_button);
         numberbuttinclicked();
-        db=new database(this);
+        db=new DataBaseHelper(this);
     }
 
 
