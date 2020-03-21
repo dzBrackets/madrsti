@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
     final database db=new database();
-    static MediaPlayer mp,correctSound,wrongSound,looserSound,clickSound ;
+    static MediaPlayer mp,correctSound,wrongSound,looserSound,clickSound,win ;
 
     static data selectedData[];
     Button Numbersbutton,scienceButton,arabicbutton;
@@ -81,6 +81,7 @@ void initInstances(){
     wrongSound=MediaPlayer.create(this, R.raw.wrong);
     looserSound=MediaPlayer.create(this, R.raw.you_idiot);
     clickSound=MediaPlayer.create(this, R.raw.qst_click);
+    win=MediaPlayer.create(this,R.raw.win);
 }
 
 static void updateScore(int newScore){
@@ -139,6 +140,7 @@ void saveToDb(){
 
                 Intent i=new Intent(MainActivity.this,numbers_activity.class);
                 startActivity(i);
+
             }
         });
         arabicbutton.setOnClickListener(new View.OnClickListener() {

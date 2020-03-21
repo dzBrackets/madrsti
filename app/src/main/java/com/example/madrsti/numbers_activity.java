@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,19 +19,19 @@ public class numbers_activity extends AppCompatActivity {
 
     private static final int TEXT_COLOR = Color.parseColor("#595959");
     static String DEFAULT_HOW_ANS="اختر الاجابة الصحيحة";
-
     database db=new database();
-
+static numbers_activity self;
     //Module name
     String module=MainActivity.module;
 ConstraintLayout respType1;
 ConstraintLayout respType2;
 ConstraintLayout bigQCont;
 int theCurrentAnswerIndex=-1;
+int localScore=0;
+static int sharableScore;
 ImageView imgQst;
     ImageView lvlDots[]=new ImageView[10];
 
-int localScore=0;
 
 TextView    modType,
             question,
@@ -57,25 +58,10 @@ TextView respondsbutt[]=new TextView[4];
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_activity);
 
-
+self=this;
         initInstances();
 
 
-//FilData=[{Type:A,question:"1+1",resp:[2,3,1,4],imgPath:null},...,{Type:A,question:"1+1",resp:[2,3,1,4],imgPath:null}]
-        /*for(int i = 0; i<filData.length; i++)
-            filData[i]=new data();
-
-        filData[0].fillType1("ماهو مجموع 20+ 16 ؟", new String[]{"36","46","26","56"},1);
-        filData[1].fillType1("ما هو العدد الذي يلي مباشرة 76 ؟", new String[]{"75","77","78","74"},2);
-        filData[2].fillType1("ماهو العدد الأكبر من 26 ؟", new String[]{"25","27","21","24"},2);
-        filData[3].fillType1("ماهو العدد الذي يسبق مباشرة 34 ؟", new String[]{"33","32","35","36"},1);
-        filData[4].fillType1("ماهي مساحة المستطيل ؟", new String[]{"طول الضلع * 4","القاعدة * الارتفاع","الطول*العرض","(الطول+العرض)*2"},3);
-        filData[5].fillType1("ما هو العدد الذي يلي مباشرة 45 ؟ ", new String[]{"44","43","47","46"},4);
-        filData[6].fillType1("ماهو مجموع 6+5 ؟ ", new String[]{"65","56","10","11"},4);
-        filData[7].fillType1("ماهو العدد الأصغر من 90 ؟ ", new String[]{"99","70","91","92"},2);
-        filData[8].fillType1("كم يساوي المتر بالسنتيمتر ؟", new String[]{"10","60","100","1000"},3);
-        filData[9].fillType1("ماهي عملية الحصر الصّحيحة ؟", new String[]{"14>12>9","8>7>11","20>19>32","0>1>2"},1);
-*/
         filData=MainActivity.selectedData;
         renderStage();
     }
@@ -182,9 +168,7 @@ void checkAnswer(){
     }
     nextStage();
 }
-void exit(){
-        numbers_activity.this.finish();
-}
+
 
 void nextStage(){
 
@@ -209,7 +193,11 @@ void nextStage(){
 
 void gameOver(){
 MainActivity.updateScore(localScore);
-numbers_activity.this.finish();
+sharableScore=localScore;
+MainActivity.win.start();
+    Intent i=new Intent(numbers_activity.this,congratPopUp.class);
+    startActivity(i);
+//numbers_activity.this.finish();
 }
 
 @SuppressLint("ClickableViewAccessibility")
