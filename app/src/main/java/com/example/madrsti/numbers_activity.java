@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,7 +50,7 @@ TextView    modType,
 
 TextView button1,button2,button3,button4;
 TextView respondsbutt[]=new TextView[4];
-    ;
+    Button back ;
 
     data[] filData;
     int currentStage=0;
@@ -60,7 +61,7 @@ TextView respondsbutt[]=new TextView[4];
 
 self=this;
         initInstances();
-
+        backclick();
 
         filData=MainActivity.selectedData;
         renderStage();
@@ -92,6 +93,7 @@ void initInstances(){
     lvlDots[7]=findViewById(R.id.dot8);
     lvlDots[8]=findViewById(R.id.dot9);
     lvlDots[9]=findViewById(R.id.dot10);
+    back=(Button)findViewById(R.id.back_button);
 }
 
     void setQstLayout(int type){
@@ -322,5 +324,13 @@ void setPressed(TextView v){
     if(filData[currentStage].type==2)
         v.setBackgroundResource(R.drawable.choiceispressed);
 
+}
+void backclick(){
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                self.finish();
+            }
+        });
 }
 }
