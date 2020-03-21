@@ -242,7 +242,7 @@
         android:clipToPadding="true"
         android:fontFamily="@font/bahij"
         android:gravity="center"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/qst_container_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

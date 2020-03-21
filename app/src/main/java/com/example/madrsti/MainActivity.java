@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     static MediaPlayer mp,correctSound,wrongSound,looserSound,clickSound,win ;
 
     static data selectedData[];
-    Button Numbersbutton,scienceButton,arabicbutton;
+    Button Numbersbutton,scienceButton,arabicbutton,animalsbutton;
     TextView score;
     static Object dataCollection[];
     static String module=null;
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Numbersbutton = (Button)findViewById(R.id.numbers_button);
         scienceButton=findViewById(R.id.science_button);
         arabicbutton=(Button)findViewById(R.id.alpabet_button123);
+        animalsbutton=(Button)findViewById(R.id.animal_button);
         initListners();
 
 
@@ -157,7 +158,20 @@ void saveToDb(){
                 startActivity(i);
             }
         });
+        animalsbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mp.start();
+                saveScore();
+                Log.i("info", "onClick: "+currentScore);
 
+                selectedData=db.getAnimal();
+                module="حيوانات الغابة";
+
+                Intent i=new Intent(MainActivity.this,numbers_activity.class);
+                startActivity(i);
+            }
+        });
 
 
     }

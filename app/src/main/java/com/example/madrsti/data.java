@@ -7,7 +7,7 @@ public class data {
     public int type;
   public String  question=null;
   public String[] responds;
-  public String path=null;
+  public int path;
   public int correctAnswer=-1;
   public String optionalQst=null;
 
@@ -17,7 +17,7 @@ public class data {
         question=Question;responds=Responds;correctAnswer=CorrectAnswer;
     }
 
-    public void fillType2(String Path,String [] Responds,int CorrectAnswer){
+    public void fillType2(int Path,String [] Responds,int CorrectAnswer){
         type=2;
         ;responds=Responds;correctAnswer=CorrectAnswer;path=Path;
     }
@@ -29,7 +29,7 @@ public class data {
         question=Question;responds=Responds;correctAnswer=CorrectAnswer;
     }
 
-    public void fillType2(String Path,String [] Responds,int CorrectAnswer,String opt){
+    public void fillType2(int Path,String [] Responds,int CorrectAnswer,String opt){
         optionalQst=opt;
         type=2;
         responds=Responds;correctAnswer=CorrectAnswer;path=Path;
@@ -88,11 +88,11 @@ public data(){}
         this.responds = responds;
     }
 
-    public String getPath() {
+    public int getPath() {
         return path;
     }
 
-    public void setPath(String path) {
+    public void setPath(int path) {
         this.path = path;
     }
 

@@ -115,15 +115,15 @@ void initInstances(){
             //show type2
             respType2.setVisibility(View.VISIBLE);
             bigQCont.setVisibility(View.VISIBLE);
+
             //hid type 2
             respType1.setVisibility(View.GONE);
             txtQCont.setVisibility(View.GONE);
             //setRespButton
-
-            respondsbutt[0]=t2button2;
-            respondsbutt[1]=t2button1;
-            respondsbutt[2]=t2button4;
-            respondsbutt[3]=t2button3;
+            respondsbutt[0]=t2button1;
+            respondsbutt[1]=t2button2;
+            respondsbutt[2]=t2button3;
+            respondsbutt[3]=t2button4;
 
         }
         resetButton();
@@ -144,6 +144,9 @@ void renderStage(){
 
         if (q.type==1)
             txtQCont.setText(q.question);
+        if(q.type == 2)
+            imgQst.setImageResource(q.path);
+
     //    if (q.type==2)
 //imgQst.setImageIcon(q.path);
 

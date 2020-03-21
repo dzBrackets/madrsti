@@ -62,6 +62,16 @@ public class database {
     }
     void loadAnimalData(){
         initdata(animal);
+        animal[0].fillType2(R.drawable.pic1,new String[]{"عصفور","يمامة","قط","سمكة"},1,"ما هذا الحيوان");
+        animal[1].fillType2(R.drawable.pic2,new String[]{"اسد","غراب","كلب","دودة"},2,"ما هذا الحيوان");
+        animal[2].fillType2(R.drawable.pic3,new String[]{"ثعلب","كلب","نمر","فهد"},1,"ما هذا الحيوان");
+        animal[3].fillType2(R.drawable.pic4,new String[]{"جرادة","سمكة","ضفدع","ذبابة"},3,"ما هذا الحيوان");
+        animal[4].fillType2(R.drawable.pic5,new String[]{"خروف","بقرة","غزالة","ثور"},3,"ما هذا الحيوان");
+        animal[5].fillType2(R.drawable.pic6,new String[]{"قنفذ","يمامة","سنجاب","بومة"},4,"ما هذا الحيوان");
+        animal[6].fillType2(R.drawable.pic7,new String[]{"ثعلب","ارنب","كلب","قط"},2,"ما هذا الحيوان");
+        animal[7].fillType2(R.drawable.pic8,new String[]{"الكسلان","سنجاب","قنفذ","الراكون"},4,"ما هذا الحيوان");
+        animal[8].fillType2(R.drawable.pic9,new String[]{"سنجاب","راكون","ذبابة","فهد"},1,"ما هذا الحيوان");
+        animal[9].fillType2(R.drawable.pic10,new String[]{"عصفور","غراب","قنفذ","ضفدع"},3,"ما هذا الحيوان");
 
     }
 
