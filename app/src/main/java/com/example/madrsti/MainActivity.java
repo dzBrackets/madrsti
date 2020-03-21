@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     static MediaPlayer mp,correctSound,wrongSound,looserSound,clickSound ;
 
     static data selectedData[];
-    Button Numbersbutton,scienceButton;
+    Button Numbersbutton,scienceButton,arabicbutton;
     TextView score;
     static Object dataCollection[];
     static String module=null;
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         updateLocale();
         Numbersbutton = (Button)findViewById(R.id.numbers_button);
         scienceButton=findViewById(R.id.science_button);
+        arabicbutton=(Button)findViewById(R.id.alpabet_button123);
         initListners();
 
 
@@ -118,7 +119,7 @@ void saveToDb(){
                 mp.start();
                 saveScore();
                 Log.i("info", "onClick: "+currentScore);
-                db.loadMathData();
+
                 selectedData=db.getMath();
                 module="رياضيات";
 
@@ -132,7 +133,7 @@ void saveToDb(){
                 mp.start();
                 saveScore();
                 Log.i("info", "onClick: "+currentScore);
-                db.loadMathData();
+
                 selectedData=db.getScience();
                 module="علوم";
 
@@ -140,6 +141,22 @@ void saveToDb(){
                 startActivity(i);
             }
         });
+        arabicbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mp.start();
+                saveScore();
+                Log.i("info", "onClick: "+currentScore);
+
+                selectedData=db.getArabic();
+                module="عربية";
+
+                Intent i=new Intent(MainActivity.this,numbers_activity.class);
+                startActivity(i);
+            }
+        });
+
+
 
     }
 
