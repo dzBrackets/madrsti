@@ -16,7 +16,7 @@ TextView back,replay;
 back=findViewById(R.id.back);
 replay=findViewById(R.id.replay);
         TextView tx=  (TextView)(findViewById(R.id.congra_score));
-        tx.setText(numbers_activity.sharableScore+1+"/10");
+        tx.setText(numbers_activity.sharableScore+"/10");
 
 initListener();
 

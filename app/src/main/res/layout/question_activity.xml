@@ -237,7 +237,6 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/picture_container"
         android:clipChildren="true"
         android:clipToPadding="true"
         android:fontFamily="@font/bahij"
@@ -248,18 +247,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/choosen_answer_tv">
 
-        <ImageView
-            android:id="@+id/animal_img"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            android:visibility="visible"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            app:cardCornerRadius="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/birdo" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/animal_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                android:visibility="visible"
+                app:srcCompat="@drawable/birdo" />
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -455,7 +461,7 @@
         android:textColor="#FF665C"
         android:textSize="70sp"
         android:textStyle="bold"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:autoSizeMaxTextSize="70sp"
         app:autoSizeMinTextSize="10sp"
         app:autoSizeTextType="uniform"
